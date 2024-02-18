@@ -1,0 +1,22 @@
+﻿@using PizzaApp.Domain.Constants
+@{
+    ViewData["Title"] = "PizzaApp";
+    Layout = "_Layout";
+}
+
+
+<div class="btn-group-vertical col-md-3 offset-4">
+    @if (User.IsInRole(nameof(Roles.Client)))
+    {
+
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary mt-3">Сделать заказ</a>
+    }
+
+    @if (User.IsInRole(nameof(Roles.Admin)))
+    {
+        <a asp-controller="Clients" asp-action="Index" class="btn btn-primary mt-3">Справочник клиентов</a>
+        <a asp-controller="Invoices" asp-action="Index" class="btn btn-primary mt-3">Учет оплат и просрочек</a>
+    }
+    <a asp-controller="Orders" asp-action="Index" class="btn btn-primary mt-3">Заказы</a>
+
+</div>

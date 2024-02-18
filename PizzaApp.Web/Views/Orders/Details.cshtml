@@ -1,0 +1,68 @@
+﻿@using PizzaApp.Application.CQs.Orders.Commands.PayForOrder
+@using PizzaApp.Domain.Constants
+@using PizzaApp.Domain.Enums
+@model PizzaApp.Application.Common.DTOs.OrderDto
+
+@{
+    ViewBag.Title = "Заказ";
+    Layout = "_Layout";
+}
+
+<h2>Заказ</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>    
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pizza)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pizza.Name)
+        </dd>
+    </dl>
+    
+    @if (Model.Status == InvoiceStatus.PaymentAwaiting)
+    {
+        @await Html.PartialAsync("_PayForOrder", new PayForOrderCommand()
+        {
+            OrderId = Model.Id
+        })
+    }
+    
+    @if (User.IsInRole(Roles.Admin))
+    {
+        <a asp-action="ResetInvoiceCreateDate" asp-controller="Orders" asp-route-orderId="@Model.Id">[Для администратора] +7 к дате открытия счета</a>
+    }
+
+    <a asp-controller="Orders" asp-action="Index">К списку заказов</a>
+</div>

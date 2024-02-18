@@ -1,0 +1,8 @@
+﻿
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model PizzaApp.Application.CQs.Orders.Commands.PayForOrder.PayForOrderCommand
+
+<form asp-controller="Orders" asp-action="Pay" method="post" class="form">
+    <input type="hidden" asp-for="@Model.OrderId" />
+    <button type="submit" class="btn btn-primary mb-2">Оплатить заказ</button>
+</form>

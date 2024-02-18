@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+	  <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaApp.Application\PizzaApp.Application.csproj" />
+    <ProjectReference Include="..\PizzaApp.Domain\PizzaApp.Domain.csproj" />
+    <ProjectReference Include="..\PizzaApp.Infrastructure\PizzaApp.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Orders\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Account\AccessDenied.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clients\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Orders\_PayForAllOrders.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Orders\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\Register.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Clients\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Orders\_PayForAllOrders.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Invoices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\AccessDenied.cshtml" />
+  </ItemGroup>
+
+</Project>

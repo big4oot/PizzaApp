@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PizzaApp.Application.Common.DTOs.ClientDto>
+
+@{
+    ViewBag.Title = "Справочник клиентов";
+    Layout = "_Layout";
+}
+
+<h2>Справочник клиентов</h2>
+
+<table id="invoicesTable" class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID клиента</th>
+        <th>Количество заказов</th>
+        <th>Баланс</th>
+        <th>Есть просроченные заказы</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var client in Model)
+    {
+        <tr>
+            <td>@client.Id</td>
+            <td>@client.OrdersCount</td>
+            <td>@client.Balance</td>
+            @if (client.HasDebt)
+            {
+                <td>Да</td>
+            }
+            else
+            {
+                <td>Нет</td>
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#invoicesTable").DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.15/i18n/Russian.json'
+                }
+            });
+        });
+    </script>
+}

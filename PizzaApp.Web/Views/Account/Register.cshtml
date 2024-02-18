@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model PizzaApp.Application.CQs.Accounts.Commands.RegisterAccount.RegisterAccountCommand
+
+@{
+    ViewBag.Title = "Создать пользователя";
+    Layout = "_Layout";
+}
+
+<div class="col-md-3 offset-4">
+    <h2>Создать пользователя</h2>
+
+    <form method="post" asp-controller="Account" asp-action="Register" class="form">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.UserName" class="form-label"></label>
+            <input asp-for="@Model.UserName" class="form-control" required/>
+            <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Password" class="form-label"></label>
+            <input type="password" asp-for="@Model.Password" class="form-control" required/>
+            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Создать пользователя</button>
+        </div>
+        <div class="form-group mt-3">
+            <a asp-controller="Account" asp-action="Login">Вход</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
