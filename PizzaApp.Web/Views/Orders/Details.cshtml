@@ -61,7 +61,7 @@
     
     @if (User.IsInRole(Roles.Admin))
     {
-        <a asp-action="ResetInvoiceCreateDate" asp-controller="Orders" asp-route-orderId="@Model.Id">[Для администратора] +7 к дате открытия счета</a>
+        <a asp-action="ResetInvoiceCreateDate" asp-controller="Orders" asp-route-orderId="@Model.Id">[Для администратора] Обнулить дату открытия счета (для тестирования фичи блокировки возможности заказа при неоплаченном долге > 7 дней)</a>
     }
 
     <a asp-controller="Orders" asp-action="Index">К списку заказов</a>
